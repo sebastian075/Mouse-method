@@ -5,11 +5,11 @@
 void mouse_c::InitMouse() {
     g_pointerDevice = CreateSyntheticPointerDevice( PT_PEN, 1, POINTER_FEEDBACK_DEFAULT );
     if (!g_pointerDevice) {
-        std::cerr << "[!] Failed to create synthetic pen pointer.\n";
+        std::cerr << "Failed to create pen.\n";
         g_pointerDevice = NULL;
     }
     else {
-        std::cout << "[+] Synthetic pen pointer initialized.\n";
+        std::cout << "pen initialized.\n";
     }
 }
 
@@ -38,7 +38,7 @@ bool mouse_c::MoveMouse_Synthetic( int x, int y, bool pressed ) {
 
     bool result = InjectSyntheticPointerInput( g_pointerDevice, &pointerInfo, 1 );
     if (!result)
-        std::cerr << "[!] InjectSyntheticPointerInput failed.\n";
+        std::cerr << "InjectSyntheticPointerInput failed.\n";
     return result;
 }
 
@@ -53,3 +53,4 @@ void mouse_c::SmoothMoveTo( int targetX, int targetY, int steps ) {
         Sleep( 5 );
     }
 }
+
